@@ -2,44 +2,40 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f1e0f1;
+    background-color: #f1c4d7; /* Light pink background */
     font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
-/* Container style */
+/* Container */
 .container {
     text-align: center;
 }
 
-/* Question style */
-.question {
-    font-size: 3rem;
-    color: #ff69b4;
-    animation: fadeIn 2s ease-in;
-}
-
-/* Heart image style */
-.heart {
-    width: 150px;
-    margin: 20px 0;
-    animation: bounce 1.5s infinite;
+/* Image display */
+.image-display {
+    width: 300px;
+    height: auto;
+    transition: all 1s ease;
 }
 
 /* Button styles */
 button {
-    background-color: #ff69b4;
+    background-color: #ff66b2; /* Pink background */
     border: none;
-    padding: 15px 25px;
-    font-size: 1.2rem;
+    padding: 20px 40px;
+    font-size: 1.5rem;
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    margin: 10px;
-    transition: all 0.3s;
+    margin: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
@@ -48,29 +44,79 @@ button:hover {
 
 /* Yes button */
 .yes-btn {
-    background-color: #28a745;
+    background-color: #ff66b2;
 }
 
 /* No button */
 .no-btn {
-    background-color: #dc3545;
+    background-color: #ff3399;
 }
 
-/* Keyframe animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
+/* Heart animation */
+@keyframes heartAnimation {
+    0% {
+        transform: scale(0.5);
         opacity: 1;
-    }
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
+        top: 50%;
     }
     50% {
-        transform: translateY(-20px);
+        transform: scale(1.5);
+        opacity: 0.5;
+        top: 10%;
     }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+        top: -50%;
+    }
+}
+
+.heart {
+    position: absolute;
+    font-size: 3rem;
+    color: #ff66b2;
+    animation: heartAnimation 2s ease-in-out infinite;
+}
+
+/* Make No button move */
+@keyframes noButtonMove {
+    0% {
+        left: 50%;
+        top: 50%;
+    }
+    25% {
+        left: 80%;
+        top: 20%;
+    }
+    50% {
+        left: 90%;
+        top: 80%;
+    }
+    75% {
+        left: 10%;
+        top: 60%;
+    }
+    100% {
+        left: 50%;
+        top: 50%;
+    }
+}
+
+.no-btn.move {
+    animation: noButtonMove 2s infinite;
+}
+
+/* Buttons Container */
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Message Style */
+h2 {
+    color: #ff66b2;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 20px;
 }
